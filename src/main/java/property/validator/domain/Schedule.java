@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Random;
 
 import lombok.Getter;
+import property.validator.application.response.State;
 
 @Getter
 public class Schedule {
@@ -13,6 +15,7 @@ public class Schedule {
     private Long userCPF;
     private Long propertyRegistry;
     private String moment;
+    private String isValid;
 
     public Schedule(
             Long propertyId,
@@ -22,6 +25,7 @@ public class Schedule {
         this.userCPF = userCPF;
         this.propertyRegistry = propertyRegistry;
         this.moment = this.setDaTime();
+        this.isValid = setValid();
     }
 
     private String setDaTime() {
@@ -29,5 +33,11 @@ public class Schedule {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         String formattedTime = initialTime.format(formatter);
         return formattedTime;
+    }
+
+    private String setValid() {
+        Random rand = new Random();
+        int value = rand.nextInt(2);
+        return value == 1 ? State.OK.getValue() : State.NOK.getValue();
     }
 }

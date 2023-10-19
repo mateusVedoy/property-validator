@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import property.validator.domain.Schedule;
@@ -22,13 +23,12 @@ public class ScheduleRepository {
         .orElse(null);
     }
 
-    public Schedule getAllPending() {
+    public List<Schedule> getAllPending() {
         String moment = getMoment();
 
         return schedules.stream()
         .filter(schedule -> schedule.getMoment().equals(moment))
-        .findAny()
-        .orElse(null);
+        .collect(Collectors.toList());
     }
 
     private String getMoment() {

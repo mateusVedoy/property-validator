@@ -1,5 +1,7 @@
 package property.validator.application.useCase;
 
+import java.util.List;
+
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkus.scheduler.Scheduled;
@@ -12,8 +14,6 @@ import property.validator.infrastructure.repository.ScheduleRepository;
 @ApplicationScoped
 public class NotifyRecipient {
     @Inject
-    SetRandomResponse validator;
-    @Inject
     @RestClient
     IHttp http;
     @Inject
@@ -21,9 +21,9 @@ public class NotifyRecipient {
 
    @Scheduled(every = "2m")
     public void schedule() {
-        String response = validator.set();
-        Schedule schedule = repository.getAllPending();
-        if(schedule != null)
-            http.post(schedule.getPropertyId(), response);
+        List<Schedule> schedules = repository.getAllPending();
+        schedules.forEach(schedule -> {
+            http.post(schedule.getPropertyId(), schedule.getIsValid());
+        });            
     }
 }
