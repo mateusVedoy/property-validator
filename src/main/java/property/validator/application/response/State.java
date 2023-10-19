@@ -1,8 +1,5 @@
-package property.validator.response;
+package property.validator.application.response;
 
-import lombok.Getter;
-
-@Getter
 public enum State {
 
     OK("OK"),
@@ -12,5 +9,9 @@ public enum State {
 
     State(String value) {
         this.value = value;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 }

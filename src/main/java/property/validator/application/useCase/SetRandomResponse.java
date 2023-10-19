@@ -1,9 +1,9 @@
-package property.validator.useCase;
+package property.validator.application.useCase;
 
 import java.util.Random;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import property.validator.response.State;
+import property.validator.application.response.State;
 
 @ApplicationScoped
 public class SetRandomResponse {

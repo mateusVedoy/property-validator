@@ -1,10 +1,5 @@
-package property.validator.dto;
+package property.validator.application.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-@Getter
-@NoArgsConstructor
 public class PropertyDTO {
     private Long id;
     private Long userCPF;
@@ -14,5 +9,17 @@ public class PropertyDTO {
         this.id = id;
         this.userCPF = userCPF;
         this.propertyRegistry = propertyRegistry;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Long getUserCPF() {
+        return this.userCPF;
+    }
+
+    public Long getPropertyRegistry() {
+        return this.propertyRegistry;
     }
 }

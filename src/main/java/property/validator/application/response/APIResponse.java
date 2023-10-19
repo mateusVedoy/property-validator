@@ -1,8 +1,5 @@
-package property.validator.response;
+package property.validator.application.response;
 
-import lombok.Getter;
-
-@Getter
 public class APIResponse {
     private int status;
     private String message;
@@ -10,5 +7,13 @@ public class APIResponse {
     public APIResponse(int status, String message) {
         this.status= status;
         this.message = message;
+    }
+
+    public int getStatus() {
+        return this.status;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 }
