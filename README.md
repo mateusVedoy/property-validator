@@ -66,6 +66,9 @@ Easily start your Reactive RESTful Web Services
 ![image](./src/main/resources/validator-flow.png)
 
 ### How to use it
+
+**Creating a validation request**
+
 Endpoint: 
 ```
 /validate
@@ -85,4 +88,15 @@ Result:
 	"status": 202,
 	"message": "ACCEPTED"
 }
+```
+
+**Validation response POST**
+
+Endpoint: 
+```
+/7406f4b7-7a33-44e0-9864-708d9a79f3c4/{propertyId}/{isValid}
+```
+Payload:
+```
+/7406f4b7-7a33-44e0-9864-708d9a79f3c4/123/NOK
 ```
