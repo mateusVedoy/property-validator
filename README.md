@@ -54,3 +54,35 @@ If you want to learn more about building native executables, please consult http
 Easily start your Reactive RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+## About Project
+
+### Flow
+* Register-API request property validation from this.
+* A new Schedule containing property information and validation result is created to a future moment and saved locally in memory.
+* Every x minutes scheduler from Quarkus pull in memory base searching for pending schedules.
+* Validator makes one POST for each schedule returned in step before.
+
+![image](./src/main/resources/validator-flow.png)
+
+### How to use it
+Endpoint: 
+```
+/validate
+```
+Body:
+```json
+{
+	"id": 77,
+	"userCPF": 123,
+	"propertyRegistry": 445
+}
+```
+
+Result:
+```json
+{
+	"status": 202,
+	"message": "ACCEPTED"
+}
+```
