@@ -39,7 +39,9 @@ public class ScheduleRepository {
     }
 
     public void save(Schedule schedule) {
+        System.out.println("Previous size: " + schedules.size());
         schedules.add(schedule);
+        System.out.println("Current size: " + schedules.size());
     }
 
     public void removeByPropertyId(Long id) {

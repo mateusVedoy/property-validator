@@ -21,8 +21,10 @@ public class NotifyRecipient {
 
    @Scheduled(every = "2m")
     public void schedule() {
+        System.out.println("\nRan notify process \n");
         List<Schedule> schedules = repository.getAllPending();
         schedules.forEach(schedule -> {
+            System.out.println("Prop id: " + schedule.getPropertyId() + "has been notified");
             http.post(schedule.getPropertyId(), schedule.getIsValid());
         });            
     }
