@@ -26,6 +26,7 @@ public class Schedule {
         this.propertyRegistry = propertyRegistry;
         this.moment = this.setDaTime();
         this.isValid = setValid();
+        System.out.println("New Schedule has been created");
     }
 
     private String setDaTime() {
