@@ -26,6 +26,7 @@ public class NotifyRecipient {
         schedules.forEach(schedule -> {
             System.out.println("Prop id: " + schedule.getPropertyId() + " has been notified");
             http.post(schedule.getPropertyId(), schedule.getIsValid());
+            repository.removeByPropertyId(schedule.getPropertyId());
         });            
     }
 }
