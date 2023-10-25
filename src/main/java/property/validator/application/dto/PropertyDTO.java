@@ -2,10 +2,10 @@ package property.validator.application.dto;
 
 public class PropertyDTO {
     private Long id;
-    private Long userCPF;
-    private Long propertyRegistry;
+    private String userCPF;
+    private String propertyRegistry;
 
-    public PropertyDTO(Long id, Long userCPF, Long propertyRegistry) {
+    public PropertyDTO(Long id, String userCPF, String propertyRegistry) {
         this.id = id;
         this.userCPF = userCPF;
         this.propertyRegistry = propertyRegistry;
@@ -15,11 +15,11 @@ public class PropertyDTO {
         return this.id;
     }
 
-    public Long getUserCPF() {
+    public String getUserCPF() {
         return this.userCPF;
     }
 
-    public Long getPropertyRegistry() {
+    public String getPropertyRegistry() {
         return this.propertyRegistry;
     }
 }
