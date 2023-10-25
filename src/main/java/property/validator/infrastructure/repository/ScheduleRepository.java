@@ -24,18 +24,15 @@ public class ScheduleRepository {
     }
 
     public List<Schedule> getAllPending() {
-        String moment = getMoment();
-
         return schedules.stream()
-        .filter(schedule -> schedule.getMoment().equals(moment))
+        .filter(schedule -> schedule.getMoment().isBefore(getMoment()))
         .collect(Collectors.toList());
     }
 
-    private String getMoment() {
-        LocalDateTime initialTime = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-        String formattedTime = initialTime.format(formatter);
-        return formattedTime;
+    private LocalDateTime getMoment() {
+        LocalDateTime dt = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        System.out.println(dt);
+        return dt;
     }
 
     public void save(Schedule schedule) {
